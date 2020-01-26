@@ -28,7 +28,7 @@ function copydeps {
     cp -Ln $dep $dest_dir/$base_dep
     chmod 644 $dest_dir/$base_dep
 
-    install_name_tool -id @rpath/$base_dep $dest_dir/$base_dep
+    install_name_tool -id @rpath/../../$(pkg-config --modversion vips-cpp)/lib/$base_dep $dest_dir/$base_dep
 
     if [ $base != $base_dep ]; then
       install_name_tool -change $dep @rpath/$base_dep $dest_dir/$base
